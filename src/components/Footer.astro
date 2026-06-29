@@ -1,0 +1,56 @@
+---
+import Container from "@components/Container.astro";
+import CurrentYear from "@components/CurrentYear.astro";
+import { SITE } from "@lib/site";
+---
+<footer class="mt-(--spacing-section) bg-stone-900 text-stone-300">
+  <Container class="grid gap-10 py-14 md:grid-cols-12">
+    <div class="md:col-span-4">
+      <div class="flex items-center gap-2 font-black text-white mb-3">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-green-700 text-white text-xs font-black">GVO</span>
+        GratisVerkeersbordenOefening
+      </div>
+      <p class="text-sm text-stone-400 max-w-xs leading-relaxed">
+        Oefen gratis alle Nederlandse verkeersborden en slaag voor je theorie-examen.
+      </p>
+      <a href="/oefenen/" class="mt-5 inline-flex items-center gap-1.5 rounded-full bg-green-700 px-5 py-2 text-sm font-bold text-white hover:bg-green-800 transition-colors">
+        Begin met oefenen →
+      </a>
+    </div>
+
+    <div class="md:col-span-2">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-green-500 mb-3">Menu</h3>
+      <ul class="space-y-2 text-sm">
+        {SITE.nav.map((i) => (
+          <li><a class="text-stone-400 hover:text-white transition-colors" href={i.href}>{i.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="md:col-span-2">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-green-500 mb-3">Info</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a class="text-stone-400 hover:text-white transition-colors" href="/over-ons/">Over ons</a></li>
+        <li><a class="text-stone-400 hover:text-white transition-colors" href="/contact/">Contact</a></li>
+        <li><a class="text-stone-400 hover:text-white transition-colors" href="/sitemap/">Sitemap</a></li>
+      </ul>
+    </div>
+
+    <div class="md:col-span-4">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-green-500 mb-3">Verkeersborden</h3>
+      <ul class="space-y-2 text-sm">
+        <li><a class="text-stone-400 hover:text-white transition-colors" href="/verkeersborden/#gevaarswaarschuwing">Gevaarswaarschuwingsborden</a></li>
+        <li><a class="text-stone-400 hover:text-white transition-colors" href="/verkeersborden/#verbod">Verbodsborden</a></li>
+        <li><a class="text-stone-400 hover:text-white transition-colors" href="/verkeersborden/#gebod">Gebodsborden</a></li>
+        <li><a class="text-stone-400 hover:text-white transition-colors" href="/verkeersborden/#informatie">Informatieborden</a></li>
+      </ul>
+    </div>
+  </Container>
+
+  <div class="border-t border-stone-800 py-5">
+    <Container class="flex flex-col items-center justify-between gap-2 text-xs text-stone-500 sm:flex-row">
+      <p>© <CurrentYear /> {SITE.name}. Alle rechten voorbehouden.</p>
+      <p>Gratis verkeersborden oefenen voor je rijbewijs.</p>
+    </Container>
+  </div>
+</footer>

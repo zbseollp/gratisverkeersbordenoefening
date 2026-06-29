@@ -1,0 +1,62 @@
+---
+import Container from "@components/Container.astro";
+import { SITE } from "@lib/site";
+const path = new URL(Astro.request.url).pathname;
+const isActive = (href: string) => href === "/" ? path === "/" : path.startsWith(href);
+---
+<header data-header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-green-100 shadow-sm">
+  <Container class="flex h-14 items-center justify-between">
+    <a href="/" class="flex items-center gap-2.5 group">
+      <div class="w-8 h-8 rounded-lg bg-green-700 group-hover:bg-green-800 transition-colors flex items-center justify-center shrink-0">
+        <span class="text-white font-black text-xs leading-none tracking-tight">GVO</span>
+      </div>
+      <span class="font-black text-sm leading-tight hidden sm:block text-gray-900">
+        Gratis<span class="text-green-700">Verkeersborden</span>Oefening
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Hoofdmenu">
+      {SITE.nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            "px-3.5 py-2 rounded-lg text-xs font-semibold transition-colors",
+            isActive(item.href)
+              ? "bg-green-50 text-green-800"
+              : "text-gray-500 hover:text-gray-900 hover:bg-gray-50",
+          ]}
+        >{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="/oefenen/" class="hidden sm:inline-flex items-center gap-1.5 bg-green-700 hover:bg-green-800 text-white text-xs font-bold px-4 py-2 rounded-full transition-colors">
+        Begin met oefenen →
+      </a>
+      <button
+        data-menu-toggle
+        class="inline-flex items-center justify-center p-2 text-gray-400 hover:text-gray-900 lg:hidden"
+        aria-label="Menu openen" aria-expanded="false"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </Container>
+
+  <div data-mobile-menu class="hidden border-t border-gray-100 bg-white lg:hidden">
+    <Container class="flex flex-col py-2 gap-1">
+      {SITE.nav.map((item) => (
+        <a href={item.href} class="px-3 py-2.5 rounded-lg text-sm font-semibold text-gray-700 hover:bg-green-50 hover:text-green-800 transition-colors">{item.label}</a>
+      ))}
+    </Container>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector("[data-menu-toggle]");
+  const menu = document.querySelector("[data-mobile-menu]");
+  toggle?.addEventListener("click", () => {
+    const open = menu?.classList.toggle("hidden") === false;
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+</script>

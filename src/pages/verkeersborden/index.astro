@@ -1,0 +1,219 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/Container.astro";
+
+const categories = [
+  {
+    id: "gevaarswaarschuwing",
+    code: "A",
+    title: "Gevaarswaarschuwingsborden",
+    kleur: "Wit met rode rand, driehoekig",
+    accent: "border-red-400 bg-red-50",
+    heading: "text-red-700",
+    borden: [
+      { nr: "A1", naam: "Gevaarlijk kruispunt" },
+      { nr: "A2", naam: "Kruispunt met voorrangsweg" },
+      { nr: "A3", naam: "Rotonde" },
+      { nr: "A4", naam: "Vliegveld" },
+      { nr: "A5", naam: "Beweegbare brug" },
+      { nr: "A6", naam: "Gevaarlijke daling" },
+      { nr: "A7", naam: "Gevaarlijke stijging" },
+      { nr: "A8", naam: "Gevaarlijke bochten" },
+      { nr: "A9", naam: "Gevaarlijke bocht" },
+      { nr: "A10", naam: "Smalle weg" },
+      { nr: "A11", naam: "Uitritten of zijwegen" },
+      { nr: "A12", naam: "Tegenliggers" },
+      { nr: "A13", naam: "Hoogteverschil" },
+      { nr: "A14", naam: "Slecht wegdek" },
+      { nr: "A15", naam: "Slipgevaar" },
+      { nr: "A16", naam: "Voetgangers op de weg" },
+      { nr: "A17", naam: "Kinderen" },
+      { nr: "A18", naam: "Fietsers en bromfietsers" },
+      { nr: "A19", naam: "Dieren" },
+      { nr: "A20", naam: "Losliggende stenen" },
+      { nr: "A21", naam: "Kade of rivieroever" },
+      { nr: "A22", naam: "Beweegbare brug (geopend)" },
+      { nr: "A23", naam: "Verkeerlichten" },
+      { nr: "A24", naam: "Overweg zonder slagbomen" },
+      { nr: "A25", naam: "Overweg met slagbomen" },
+    ],
+  },
+  {
+    id: "voorrang",
+    code: "B",
+    title: "Voorrangsborden",
+    kleur: "Diverse vormen — geel/wit diamant, rood/wit driehoek",
+    accent: "border-amber-400 bg-amber-50",
+    heading: "text-amber-700",
+    borden: [
+      { nr: "B1", naam: "Voorrangsweg (ruit)" },
+      { nr: "B2", naam: "Einde voorrangsweg" },
+      { nr: "B3", naam: "Voorrang verlenen aan verkeer van rechts" },
+      { nr: "B4", naam: "Voorrang op kruispunt" },
+      { nr: "B5", naam: "Kruispunt met voorrangsweg" },
+      { nr: "B6", naam: "Stop, verleen voorrang (stopbord)" },
+      { nr: "B7", naam: "Verleen voorrang" },
+    ],
+  },
+  {
+    id: "verbod",
+    code: "C",
+    title: "Verbodsborden",
+    kleur: "Wit/blauw met rode rand, rond",
+    accent: "border-rose-400 bg-rose-50",
+    heading: "text-rose-700",
+    borden: [
+      { nr: "C1", naam: "Gesloten voor alle voertuigen" },
+      { nr: "C2", naam: "Gesloten voor motorvoertuigen" },
+      { nr: "C3", naam: "Gesloten voor vrachtauto's" },
+      { nr: "C4", naam: "Gesloten voor autobussen" },
+      { nr: "C5", naam: "Gesloten voor rijwielen" },
+      { nr: "C6", naam: "Verbod in te halen (motorvoertuigen)" },
+      { nr: "C7", naam: "Verbod in te halen (vrachtauto's)" },
+      { nr: "C9", naam: "Verbod voor fietsers en bromfietsers" },
+      { nr: "C10", naam: "Gesloten voor bromfietsen" },
+      { nr: "C11", naam: "Maximumsnelheid" },
+      { nr: "C12", naam: "Einde maximumsnelheid" },
+      { nr: "C13", naam: "Einde verbod inhalen" },
+      { nr: "C14", naam: "Einde verbod inhalen vrachtauto's" },
+      { nr: "C15", naam: "Gesloten voor voertuigen waarvan de breedte meer is dan..." },
+      { nr: "C16", naam: "Gesloten voor voertuigen waarvan de hoogte meer is dan..." },
+      { nr: "C17", naam: "Gesloten voor voertuigen waarvan het gewicht meer is dan..." },
+      { nr: "C18", naam: "Gesloten voor voertuigen waarvan de aslast meer is dan..." },
+      { nr: "C19", naam: "Verbod te keren" },
+      { nr: "C20", naam: "Verbod achteruit te rijden" },
+      { nr: "C21", naam: "Geslotenverklaring" },
+      { nr: "C22", naam: "Einde alle verboden" },
+    ],
+  },
+  {
+    id: "gebod",
+    code: "D",
+    title: "Gebodsborden",
+    kleur: "Blauw, rond",
+    accent: "border-blue-400 bg-blue-50",
+    heading: "text-blue-700",
+    borden: [
+      { nr: "D1", naam: "Verplichte rijrichting rechtdoor" },
+      { nr: "D2", naam: "Verplichte rijrichting rechts af" },
+      { nr: "D3", naam: "Verplichte rijrichting links af" },
+      { nr: "D4", naam: "Verplichte rijrichting rechtdoor of rechts af" },
+      { nr: "D5", naam: "Verplichte rijrichting rechtdoor of links af" },
+      { nr: "D6", naam: "Rotonde" },
+      { nr: "D7", naam: "Fietspad (verplicht)" },
+      { nr: "D8", naam: "Ruiterpad (verplicht)" },
+      { nr: "D9", naam: "Voetpad (verplicht)" },
+      { nr: "D10", naam: "Rijwiel- en bromfietspad" },
+      { nr: "D11", naam: "Voetpad en fietspad (naast elkaar)" },
+      { nr: "D12", naam: "Voetpad en fietspad (gemengd)" },
+      { nr: "D13", naam: "Maximumsnelheid (gebod)" },
+    ],
+  },
+  {
+    id: "aanwijzing",
+    code: "E",
+    title: "Aanwijzingsborden",
+    kleur: "Blauw, rechthoekig",
+    accent: "border-sky-400 bg-sky-50",
+    heading: "text-sky-700",
+    borden: [
+      { nr: "E1", naam: "Parkeerplaats" },
+      { nr: "E2", naam: "Parkeerverbod" },
+      { nr: "E3", naam: "Parkeerverbod (één kant)" },
+      { nr: "E4", naam: "Parkeerverbod (beide kanten)" },
+      { nr: "E5", naam: "Verbod stil te staan" },
+      { nr: "E6", naam: "Bushalte" },
+      { nr: "E7", naam: "Tramhalte" },
+      { nr: "E8", naam: "Taxistandplaats" },
+      { nr: "E9", naam: "Gehandicaptenparkeerplaats" },
+      { nr: "E10", naam: "Laden en lossen" },
+      { nr: "E11", naam: "Bestelauto's toegestaan" },
+      { nr: "E12", naam: "Motorvoertuigen" },
+      { nr: "E13", naam: "Rijstrook voor linksaf" },
+    ],
+  },
+  {
+    id: "informatie",
+    code: "F",
+    title: "Informatieborden",
+    kleur: "Diverse vormen en kleuren",
+    accent: "border-green-400 bg-green-50",
+    heading: "text-green-700",
+    borden: [
+      { nr: "F1", naam: "Autosnelweg" },
+      { nr: "F2", naam: "Einde autosnelweg" },
+      { nr: "F3", naam: "Autoweg" },
+      { nr: "F4", naam: "Einde autoweg" },
+      { nr: "F5", naam: "Eenrichtingsweg" },
+      { nr: "F6", naam: "Eenrichtingsweg (tegengesteld)" },
+      { nr: "F7", naam: "Bebouwde kom" },
+      { nr: "F8", naam: "Einde bebouwde kom" },
+      { nr: "F9", naam: "Vooraanduiding overweg" },
+      { nr: "F10", naam: "Overweg waarschuwingsbord" },
+      { nr: "F11", naam: "Tunnel" },
+      { nr: "F12", naam: "Einde tunnel" },
+      { nr: "F13", naam: "Zone 30" },
+      { nr: "F14", naam: "Einde zone 30" },
+    ],
+  },
+];
+---
+<BaseLayout
+  title="Alle Nederlandse verkeersborden — overzicht per categorie | GratisVerkeersbordenOefening"
+  description="Compleet overzicht van alle Nederlandse verkeersborden per categorie: gevaar, voorrang, verbod, gebod, aanwijzing en informatie."
+>
+  <div class="bg-green-700 text-white">
+    <Container class="py-14">
+      <h1 class="text-4xl font-black tracking-tight">Alle verkeersborden</h1>
+      <p class="mt-3 text-green-100 max-w-xl">Compleet overzicht per categorie — van A (gevaarswaarschuwing) tot F (informatie).</p>
+    </Container>
+  </div>
+
+  <!-- Category jump nav -->
+  <div class="sticky top-14 z-40 bg-white border-b border-gray-100 shadow-sm">
+    <Container class="py-2">
+      <nav class="flex gap-2 overflow-x-auto scrollbar-none text-xs font-semibold">
+        {categories.map((c) => (
+          <a href={`#${c.id}`} class="shrink-0 px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 hover:border-green-400 hover:text-green-700 transition-colors whitespace-nowrap">
+            {c.code} — {c.title.replace('borden', '').trim()}
+          </a>
+        ))}
+      </nav>
+    </Container>
+  </div>
+
+  <Container class="py-(--spacing-section) space-y-16">
+    {categories.map((cat) => (
+      <section id={cat.id} class={`rounded-2xl border-2 ${cat.accent} overflow-hidden`}>
+        <div class="px-6 py-5 border-b border-current/10">
+          <div class="flex items-center gap-3">
+            <span class={`text-xs font-black uppercase tracking-widest ${cat.heading}`}>Categorie {cat.code}</span>
+            <span class="text-gray-300">|</span>
+            <span class="text-xs text-gray-400">{cat.kleur}</span>
+          </div>
+          <h2 class={`text-2xl font-black mt-1 ${cat.heading}`}>{cat.title}</h2>
+        </div>
+        <div class="p-6">
+          <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {cat.borden.map((b) => (
+              <div class="flex items-center gap-3 bg-white rounded-xl px-4 py-2.5 border border-white/80 shadow-sm">
+                <span class={`text-xs font-black ${cat.heading} shrink-0 w-10`}>{b.nr}</span>
+                <span class="text-sm text-gray-700">{b.naam}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+  </Container>
+
+  <section class="bg-green-700 text-white">
+    <Container class="py-12 text-center">
+      <h2 class="text-2xl font-black mb-3">Klaar om te oefenen?</h2>
+      <p class="text-green-100 text-sm mb-6">Nu je alle categorieën kent, ga oefenen en test je kennis.</p>
+      <a href="/oefenen/" class="inline-flex items-center bg-amber-400 text-gray-900 font-black px-7 py-3 rounded-full hover:bg-amber-300 transition-colors text-sm">
+        Oefentips bekijken →
+      </a>
+    </Container>
+  </section>
+</BaseLayout>

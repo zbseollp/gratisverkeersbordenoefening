@@ -1,0 +1,28 @@
+---
+import type { Post } from "@lib/posts";
+import { displayTitle, displayDescription, formatDate } from "@lib/posts";
+interface Props { post: Post; eager?: boolean }
+const { post } = Astro.props;
+const { date } = post.data;
+const title = displayTitle(post);
+const desc = displayDescription(post);
+const href = `/${post.id}/`;
+const month = date.toLocaleDateString("nl-NL", { month: "short" }).toUpperCase();
+const year = date.getFullYear();
+---
+<!-- Encyclopedia / register stijl: horizontale entry met datumkolom -->
+<article class="group relative flex gap-0 bg-white border border-slate-200 hover:border-slate-900 transition-colors overflow-hidden">
+  <div class="shrink-0 w-14 bg-slate-900 flex flex-col items-center justify-center text-center py-4 px-2">
+    <span class="text-white text-xs font-bold leading-none">{month}</span>
+    <span class="text-slate-400 text-xs leading-none mt-1">{year}</span>
+  </div>
+  <div class="flex flex-col flex-1 px-5 py-4">
+    <h2 class="text-sm font-bold text-slate-900 leading-snug group-hover:text-blue-800 transition-colors">
+      <a href={href} class="after:absolute after:inset-0">{title}</a>
+    </h2>
+    {desc && <p class="mt-1.5 text-xs text-slate-500 leading-relaxed line-clamp-2">{desc}</p>}
+  </div>
+  <div class="shrink-0 flex items-center pr-4 text-slate-300 group-hover:text-slate-900 transition-colors">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </div>
+</article>
