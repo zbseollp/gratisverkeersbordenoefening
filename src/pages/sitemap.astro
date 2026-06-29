@@ -11,17 +11,18 @@ const main = [
 ];
 ---
 <BaseLayout title="Sitemap | GratisVerkeersbordenOefening" description="Overzicht van alle pagina's op GratisVerkeersbordenOefening.">
-  <div class="bg-green-700 text-white">
-    <Container class="py-10">
-      <h1 class="text-4xl font-black tracking-tight">Sitemap</h1>
+  <div class="bg-zinc-950 text-white">
+    <Container class="py-12">
+      <span class="text-xs font-black uppercase tracking-widest text-yellow-400 mb-3 block">Sitemap</span>
+      <h1 class="text-4xl font-black tracking-tight">Alle pagina's</h1>
     </Container>
   </div>
 
   <Container class="py-(--spacing-section)">
     <section>
-      <h2 class="text-xl font-black text-gray-900 mb-4">Pagina's</h2>
+      <h2 class="text-xl font-black text-zinc-950 mb-4">Pagina's</h2>
       <ul class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-        {main.map((p) => <li><a class="text-green-700 hover:underline" href={p.href}>{p.title}</a></li>)}
+        {main.map((p) => <li><a class="text-zinc-600 hover:text-zinc-950 border-b border-zinc-300 hover:border-zinc-950 pb-0.5 transition-colors text-sm" href={p.href}>{p.title}</a></li>)}
       </ul>
     </section>
   </Container>

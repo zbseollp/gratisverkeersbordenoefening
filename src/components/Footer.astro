@@ -3,52 +3,56 @@ import Container from "@components/Container.astro";
 import CurrentYear from "@components/CurrentYear.astro";
 import { SITE } from "@lib/site";
 ---
-<footer class="mt-(--spacing-section) bg-stone-900 text-stone-300">
+<footer class="mt-(--spacing-section) bg-zinc-950 text-zinc-400">
   <Container class="grid gap-10 py-14 md:grid-cols-12">
     <div class="md:col-span-4">
       <div class="flex items-center gap-2 font-black text-white mb-3">
-        <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-green-700 text-white text-xs font-black">GVO</span>
-        GratisVerkeersbordenOefening
+        <div class="w-7 h-7 bg-yellow-400 flex items-center justify-center shrink-0">
+          <span class="text-zinc-900 font-black text-[9px] leading-none">GVO</span>
+        </div>
+        GratisVerkeersborden<span class="text-yellow-400">Oefening</span>
       </div>
-      <p class="text-sm text-stone-400 max-w-xs leading-relaxed">
+      <p class="text-sm text-zinc-500 max-w-xs leading-relaxed">
         Oefen gratis alle Nederlandse verkeersborden en slaag voor je theorie-examen.
       </p>
-      <a href="/oefenen/" class="mt-5 inline-flex items-center gap-1.5 rounded-full bg-green-700 px-5 py-2 text-sm font-bold text-white hover:bg-green-800 transition-colors">
+      <a href="/oefenen/" class="mt-5 inline-flex items-center bg-yellow-400 text-zinc-900 px-5 py-2 text-sm font-black hover:bg-yellow-300 transition-colors">
         Begin met oefenen →
       </a>
     </div>
 
     <div class="md:col-span-2">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-green-500 mb-3">Menu</h3>
+      <h3 class="text-xs font-black uppercase tracking-wider text-yellow-400 mb-3">Menu</h3>
       <ul class="space-y-2 text-sm">
         {SITE.nav.map((i) => (
-          <li><a class="text-stone-400 hover:text-white transition-colors" href={i.href}>{i.label}</a></li>
+          <li><a class="text-zinc-500 hover:text-white transition-colors" href={i.href}>{i.label}</a></li>
         ))}
       </ul>
     </div>
 
     <div class="md:col-span-2">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-green-500 mb-3">Info</h3>
+      <h3 class="text-xs font-black uppercase tracking-wider text-yellow-400 mb-3">Info</h3>
       <ul class="space-y-2 text-sm">
-        <li><a class="text-stone-400 hover:text-white transition-colors" href="/over-ons/">Over ons</a></li>
-        <li><a class="text-stone-400 hover:text-white transition-colors" href="/contact/">Contact</a></li>
-        <li><a class="text-stone-400 hover:text-white transition-colors" href="/sitemap/">Sitemap</a></li>
+        <li><a class="text-zinc-500 hover:text-white transition-colors" href="/over-ons/">Over ons</a></li>
+        <li><a class="text-zinc-500 hover:text-white transition-colors" href="/contact/">Contact</a></li>
+        <li><a class="text-zinc-500 hover:text-white transition-colors" href="/sitemap/">Sitemap</a></li>
       </ul>
     </div>
 
     <div class="md:col-span-4">
-      <h3 class="text-xs font-bold uppercase tracking-wider text-green-500 mb-3">Verkeersborden</h3>
+      <h3 class="text-xs font-black uppercase tracking-wider text-yellow-400 mb-3">Categorieën</h3>
       <ul class="space-y-2 text-sm">
-        <li><a class="text-stone-400 hover:text-white transition-colors" href="/verkeersborden/#gevaarswaarschuwing">Gevaarswaarschuwingsborden</a></li>
-        <li><a class="text-stone-400 hover:text-white transition-colors" href="/verkeersborden/#verbod">Verbodsborden</a></li>
-        <li><a class="text-stone-400 hover:text-white transition-colors" href="/verkeersborden/#gebod">Gebodsborden</a></li>
-        <li><a class="text-stone-400 hover:text-white transition-colors" href="/verkeersborden/#informatie">Informatieborden</a></li>
+        <li><a class="text-zinc-500 hover:text-white transition-colors" href="/verkeersborden/#gevaarswaarschuwing">A — Gevaarswaarschuwing</a></li>
+        <li><a class="text-zinc-500 hover:text-white transition-colors" href="/verkeersborden/#voorrang">B — Voorrang</a></li>
+        <li><a class="text-zinc-500 hover:text-white transition-colors" href="/verkeersborden/#verbod">C — Verbod</a></li>
+        <li><a class="text-zinc-500 hover:text-white transition-colors" href="/verkeersborden/#gebod">D — Gebod</a></li>
+        <li><a class="text-zinc-500 hover:text-white transition-colors" href="/verkeersborden/#aanwijzing">E — Aanwijzing</a></li>
+        <li><a class="text-zinc-500 hover:text-white transition-colors" href="/verkeersborden/#informatie">F — Informatie</a></li>
       </ul>
     </div>
   </Container>
 
-  <div class="border-t border-stone-800 py-5">
-    <Container class="flex flex-col items-center justify-between gap-2 text-xs text-stone-500 sm:flex-row">
+  <div class="border-t border-zinc-800 py-5">
+    <Container class="flex flex-col items-center justify-between gap-2 text-xs text-zinc-600 sm:flex-row">
       <p>© <CurrentYear /> {SITE.name}. Alle rechten voorbehouden.</p>
       <p>Gratis verkeersborden oefenen voor je rijbewijs.</p>
     </Container>

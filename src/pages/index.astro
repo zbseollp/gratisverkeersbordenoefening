@@ -4,157 +4,103 @@ import Container from "@components/Container.astro";
 import { SITE } from "@lib/site";
 
 const categories = [
-  {
-    id: "gevaarswaarschuwing",
-    label: "A — Gevaar",
-    title: "Gevaarswaarschuwingsborden",
-    desc: "Driehoekige borden met rode rand. Waarschuwen voor gevaarlijke situaties op de weg.",
-    shape: "▲",
-    bg: "bg-red-50",
-    border: "border-red-200",
-    accent: "text-red-600",
-  },
-  {
-    id: "voorrang",
-    label: "B — Voorrang",
-    title: "Voorrangsborden",
-    desc: "Regelen wie voorrang heeft. Denk aan de haaienstanden, het stopbord en het voorrangsbord.",
-    shape: "◆",
-    bg: "bg-amber-50",
-    border: "border-amber-200",
-    accent: "text-amber-700",
-  },
-  {
-    id: "verbod",
-    label: "C — Verbod",
-    title: "Verbodsborden",
-    desc: "Ronde borden met rode rand. Verbieden bepaald gedrag: inhalen, parkeren, bepaalde voertuigen.",
-    shape: "⊘",
-    bg: "bg-rose-50",
-    border: "border-rose-200",
-    accent: "text-rose-600",
-  },
-  {
-    id: "gebod",
-    label: "D — Gebod",
-    title: "Gebodsborden",
-    desc: "Ronde blauwe borden. Schrijven voor wat je MOET doen: rechts houden, doorrijden, snelheid.",
-    shape: "●",
-    bg: "bg-blue-50",
-    border: "border-blue-200",
-    accent: "text-blue-600",
-  },
-  {
-    id: "aanwijzing",
-    label: "E — Aanwijzing",
-    title: "Aanwijzingsborden",
-    desc: "Blauwe rechthoekige borden voor rijstroken, parkeren, voetgangers en fietsers.",
-    shape: "▬",
-    bg: "bg-sky-50",
-    border: "border-sky-200",
-    accent: "text-sky-600",
-  },
-  {
-    id: "informatie",
-    label: "F — Informatie",
-    title: "Informatieborden",
-    desc: "Geven aanvullende informatie: bebouwde kom, snelheidszones, parkeerinfo en meer.",
-    shape: "ℹ",
-    bg: "bg-green-50",
-    border: "border-green-200",
-    accent: "text-green-700",
-  },
+  { letter: "A", label: "Gevaarswaarschuwingsborden", desc: "Driehoekige borden met rode rand. Waarschuwen voor gevaarlijke situaties op de weg.", href: "/verkeersborden/#gevaarswaarschuwing", symbol: "▲", color: "text-red-400" },
+  { letter: "B", label: "Voorrangsborden", desc: "Regelen wie voorrang heeft — haaienstanden, stopbord en voorrangsbord.", href: "/verkeersborden/#voorrang", symbol: "◆", color: "text-amber-400" },
+  { letter: "C", label: "Verbodsborden", desc: "Ronde borden met rode rand. Verbieden inhalen, parkeren of bepaalde voertuigen.", href: "/verkeersborden/#verbod", symbol: "⊘", color: "text-rose-400" },
+  { letter: "D", label: "Gebodsborden", desc: "Ronde blauwe borden. Schrijven voor wat je MOET doen: richting, rotonde, snelheid.", href: "/verkeersborden/#gebod", symbol: "●", color: "text-blue-400" },
+  { letter: "E", label: "Aanwijzingsborden", desc: "Blauwe rechthoekige borden voor rijstroken, parkeren en fietsers.", href: "/verkeersborden/#aanwijzing", symbol: "▬", color: "text-sky-400" },
+  { letter: "F", label: "Informatieborden", desc: "Geven aanvullende informatie: bebouwde kom, snelheidszones, parkeerinfo.", href: "/verkeersborden/#informatie", symbol: "ℹ", color: "text-zinc-400" },
 ];
 ---
 <BaseLayout title={`${SITE.name} — ${SITE.tagline}`} description={SITE.description}>
 
-  <!-- Hero -->
-  <section class="bg-green-700 text-white overflow-hidden">
+  <!-- Hero: white, big typography, dark sign grid -->
+  <section class="bg-white border-b border-zinc-100">
     <Container class="py-16 md:py-24">
-      <div class="max-w-2xl">
-        <div class="inline-flex items-center gap-2 bg-green-600/60 border border-green-500/40 rounded-full px-4 py-1.5 text-xs font-semibold text-green-100 mb-6">
-          🆓 Gratis oefenen — geen account nodig
-        </div>
-        <h1 class="text-5xl font-black tracking-tight leading-tight sm:text-6xl">
-          Ken jij alle<br/>
-          <span class="text-amber-300">verkeersborden?</span>
-        </h1>
-        <p class="mt-5 text-green-100 text-lg max-w-lg leading-relaxed">
-          Er zijn meer dan 200 officiële Nederlandse verkeersborden. Herken ze allemaal en slaag voor je theorie-examen.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/oefenen/" class="inline-flex items-center gap-2 bg-amber-400 text-gray-900 font-black px-6 py-3 rounded-full text-sm hover:bg-amber-300 transition-colors shadow-sm">
-            Begin met oefenen →
-          </a>
-          <a href="/verkeersborden/" class="inline-flex items-center gap-2 border border-green-500 text-green-100 hover:text-white hover:border-green-400 font-semibold px-6 py-3 rounded-full text-sm transition-colors">
-            Alle categorieën
-          </a>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-12">
-        {[
-          { v: "200+", l: "Verkeersborden" },
-          { v: "6", l: "Categorieën" },
-          { v: "65", l: "Examenvragen" },
-          { v: "100%", l: "Gratis" },
-        ].map(({ v, l }) => (
-          <div class="bg-green-600/50 border border-green-500/30 rounded-xl px-4 py-3">
-            <div class="text-2xl font-black text-white">{v}</div>
-            <div class="text-xs text-green-200 mt-0.5">{l}</div>
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block bg-yellow-400 text-zinc-900 text-xs font-black px-3 py-1 mb-6 uppercase tracking-wide">Gratis · geen account nodig</span>
+          <h1 class="text-5xl sm:text-6xl font-black tracking-tight text-zinc-950 leading-none">
+            Ken jij alle<br/>
+            <span class="text-yellow-400">200+</span><br/>
+            verkeers&shy;borden?
+          </h1>
+          <p class="mt-6 text-zinc-600 text-base max-w-md leading-relaxed">
+            Er zijn meer dan 200 officiële Nederlandse verkeersborden. Leer ze herkennen en slaag voor je theorie-examen — gratis, direct, zonder account.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="/oefenen/" class="inline-flex items-center bg-yellow-400 text-zinc-900 font-black px-6 py-3 text-sm hover:bg-yellow-300 transition-colors">
+              Begin met oefenen →
+            </a>
+            <a href="/verkeersborden/" class="inline-flex items-center border-2 border-zinc-900 text-zinc-900 font-bold px-6 py-3 text-sm hover:bg-zinc-900 hover:text-white transition-colors">
+              Alle categorieën
+            </a>
           </div>
-        ))}
+        </div>
+
+        <!-- Dark sign tiles — 3×2 grid -->
+        <div class="grid grid-cols-3 gap-2">
+          {categories.map((cat) => (
+            <a href={cat.href} class="group bg-zinc-950 flex flex-col items-center justify-center aspect-square hover:bg-zinc-800 transition-colors">
+              <span class={`text-4xl leading-none ${cat.color}`}>{cat.symbol}</span>
+              <span class="mt-2 text-yellow-400 font-black text-xs">{cat.letter}</span>
+            </a>
+          ))}
+        </div>
       </div>
     </Container>
   </section>
 
-  <!-- Sign categories -->
+  <!-- Categories: stacked list, not card grid -->
   <Container class="py-(--spacing-section)">
-    <div class="text-center mb-10">
-      <p class="text-xs font-bold uppercase tracking-widest text-green-600 mb-2">Categorieën</p>
-      <h2 class="text-3xl font-black text-gray-900">Alle soorten verkeersborden</h2>
-      <p class="mt-2 text-gray-500 max-w-xl mx-auto text-sm">Elke categorie heeft een eigen vorm en kleur zodat je borden snel herkent.</p>
+    <div class="mb-8">
+      <span class="text-xs font-black uppercase tracking-widest text-zinc-400">6 categorieën</span>
+      <h2 class="text-3xl font-black text-zinc-950 mt-1">Welke borden zijn er?</h2>
     </div>
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="divide-y divide-zinc-100 border-t border-b border-zinc-100">
       {categories.map((cat) => (
-        <a href={`/verkeersborden/#${cat.id}`}
-           class={`group flex flex-col rounded-2xl border ${cat.border} ${cat.bg} p-5 hover:shadow-md transition-all`}>
-          <div class="flex items-center justify-between mb-4">
-            <span class={`text-xs font-bold ${cat.accent} uppercase tracking-wider`}>{cat.label}</span>
-            <span class={`text-2xl ${cat.accent} opacity-50 group-hover:opacity-100 transition-opacity`}>{cat.shape}</span>
+        <a href={cat.href} class="group flex items-start gap-5 py-5 hover:bg-zinc-50 -mx-4 px-4 transition-colors">
+          <div class="shrink-0 w-10 h-10 bg-zinc-950 flex items-center justify-center">
+            <span class="text-yellow-400 font-black text-sm">{cat.letter}</span>
           </div>
-          <h3 class="font-black text-gray-900 mb-1.5">{cat.title}</h3>
-          <p class="text-sm text-gray-500 leading-relaxed flex-1">{cat.desc}</p>
-          <span class={`mt-4 text-xs font-bold ${cat.accent}`}>Bekijken →</span>
+          <div class="flex-1 min-w-0">
+            <div class="font-black text-zinc-900 group-hover:text-zinc-700">{cat.label}</div>
+            <p class="text-sm text-zinc-500 mt-0.5 leading-relaxed">{cat.desc}</p>
+          </div>
+          <span class="shrink-0 text-zinc-200 group-hover:text-yellow-400 transition-colors text-xl font-light leading-none mt-1">→</span>
         </a>
       ))}
     </div>
+    <div class="mt-6">
+      <a href="/verkeersborden/" class="text-sm font-bold text-zinc-500 hover:text-zinc-900 transition-colors border-b border-zinc-300 hover:border-zinc-900 pb-0.5">
+        Volledig overzicht met alle borden →
+      </a>
+    </div>
   </Container>
 
-  <!-- How to practise -->
-  <section class="bg-stone-50 border-y border-stone-200">
+  <!-- How to practise: dark background -->
+  <section class="bg-zinc-950 text-white">
     <Container class="py-(--spacing-section)">
-      <div class="text-center mb-10">
-        <p class="text-xs font-bold uppercase tracking-widest text-green-600 mb-2">Aanpak</p>
-        <h2 class="text-3xl font-black text-gray-900">Zo oefen je slim</h2>
+      <div class="mb-12">
+        <span class="text-xs font-black uppercase tracking-widest text-yellow-400">Aanpak</span>
+        <h2 class="text-3xl font-black text-white mt-1">Zo oefen je slim</h2>
       </div>
-      <div class="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
+      <div class="grid gap-10 sm:grid-cols-3">
         {[
-          { n: "1", icon: "📋", title: "Leer de categorieën", body: "Begin met de zes categorieën. Elke categorie heeft een eigen vorm en kleur — dat maakt herkennen veel makkelijker." },
-          { n: "2", icon: "🔁", title: "Oefen per categorie", body: "Focus eerst op de meest voorkomende borden: verbod, gebod en gevaarswaarschuwing. Die komen het vaakst voor op het examen." },
-          { n: "3", icon: "✅", title: "Test jezelf", body: "Train herkenning door borden door elkaar te oefenen, precies zoals op het echte theorie-examen." },
-        ].map(({ n, icon, title, body }) => (
-          <div class="bg-white rounded-2xl p-6 border border-stone-200 shadow-sm relative overflow-hidden">
-            <div class="text-3xl mb-3">{icon}</div>
-            <div class="absolute top-4 right-4 text-5xl font-black text-stone-100 leading-none select-none">{n}</div>
-            <h3 class="font-black text-gray-900 mb-2">{title}</h3>
-            <p class="text-sm text-gray-500 leading-relaxed">{body}</p>
+          { n: "01", title: "Leer de systematiek", body: "Elke categorie heeft een eigen vorm en kleur. Driehoek + rood = gevaar. Cirkel + rood = verbod. Cirkel + blauw = gebod. Die logica dekt 80% van alle borden." },
+          { n: "02", title: "Focus op het examen", body: "C6, C11, D1, D4, B6, B7 — dit zijn de borden die het vaakst terugkomen op het CBR examen. Begin hier, ga daarna verder." },
+          { n: "03", title: "Train visuele herkenning", body: "Op het examen zie je een afbeelding, geen omschrijving. Oefen borden visueel herkennen — niet nummercodes uit je hoofd leren." },
+        ].map(({ n, title, body }) => (
+          <div>
+            <div class="text-6xl font-black text-yellow-400 leading-none mb-5 opacity-80">{n}</div>
+            <h3 class="font-black text-white mb-2">{title}</h3>
+            <p class="text-sm text-zinc-400 leading-relaxed">{body}</p>
           </div>
         ))}
       </div>
-      <div class="text-center mt-8">
-        <a href="/oefenen/" class="inline-flex items-center bg-green-700 hover:bg-green-800 text-white font-bold px-7 py-3 rounded-full text-sm transition-colors">
-          Direct oefenen →
+      <div class="mt-12 pt-8 border-t border-zinc-800">
+        <a href="/oefenen/" class="inline-flex items-center bg-yellow-400 text-zinc-900 font-black px-6 py-3 text-sm hover:bg-yellow-300 transition-colors">
+          Bekijk de volledige oefenstrategie →
         </a>
       </div>
     </Container>
@@ -162,38 +108,38 @@ const categories = [
 
   <!-- FAQ -->
   <Container class="max-w-2xl py-(--spacing-section)">
-    <div class="text-center mb-8">
-      <p class="text-xs font-bold uppercase tracking-widest text-green-600 mb-2">Veelgestelde vragen</p>
-      <h2 class="text-3xl font-black text-gray-900">Vragen over verkeersborden</h2>
+    <div class="mb-8">
+      <span class="text-xs font-black uppercase tracking-widest text-zinc-400">Vragen</span>
+      <h2 class="text-3xl font-black text-zinc-950 mt-1">Veelgestelde vragen</h2>
     </div>
-    <div class="space-y-3">
+    <div class="divide-y divide-zinc-100 border-t border-zinc-100">
       {[
         { q: "Hoeveel verkeersborden zijn er in Nederland?", a: "Er zijn meer dan 200 officiële Nederlandse verkeersborden, ingedeeld in categorieën A t/m G. Voor het theorie-examen moet je de meest voorkomende borden kunnen herkennen." },
-        { q: "Welke verkeersborden komen het meest voor op het examen?", a: "Verbodsborden (C), gebodsborden (D) en gevaarswaarschuwingsborden (A) komen het meest voor. Ook voorrangssituaties met het stopbord (B6) en verleen voorrang (B7) zijn examenfavoriet." },
-        { q: "Hoe herken ik snel wat een bord betekent?", a: "Gebruik de vorm en kleur als eerste aanwijzing. Driehoek met rode rand = gevaar. Rode cirkel = verbod. Blauwe cirkel = gebod. Blauw rechthoek = aanwijzing. Die basisregel dekt al 80% van de borden." },
+        { q: "Welke borden komen het meest voor op het examen?", a: "Verbodsborden (C), gebodsborden (D) en gevaarswaarschuwingsborden (A) komen het meest voor. Ook voorrangssituaties met het stopbord (B6) en verleen voorrang (B7) zijn examenfavoriet." },
+        { q: "Hoe herken ik snel wat een bord betekent?", a: "Gebruik de vorm en kleur als eerste aanwijzing. Driehoek met rode rand = gevaar. Rode cirkel = verbod. Blauwe cirkel = gebod. Die basisregel dekt al 80% van de borden." },
         { q: "Moet ik alle borden uit mijn hoofd leren?", a: "Niet per se. Focus op de meest voorkomende borden en leer de systematiek van de categorieën. Als je de logica begrijpt, kun je ook onbekende borden redeneren." },
-        { q: "Zijn de borden hetzelfde als in België of Duitsland?", a: "Grotendeels wel — veel borden zijn gebaseerd op Europese verdragen. Er zijn kleine regionale verschillen, maar de basiscategorieën en -vormen zijn in heel Europa hetzelfde." },
+        { q: "Zijn de borden hetzelfde als in België of Duitsland?", a: "Grotendeels wel — veel borden zijn gebaseerd op Europese verdragen. Er zijn kleine regionale verschillen, maar de basiscategorieën zijn in heel Europa hetzelfde." },
       ].map(({ q, a }) => (
-        <details class="group bg-white rounded-2xl border border-gray-100 hover:border-green-200 transition-colors overflow-hidden">
-          <summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-semibold text-gray-900 list-none gap-4">
+        <details class="group">
+          <summary class="flex cursor-pointer items-center justify-between py-4 text-sm font-bold text-zinc-900 list-none gap-4 hover:text-zinc-600 transition-colors">
             {q}
-            <span class="text-xl font-light text-green-500 group-open:rotate-45 transition-transform shrink-0 leading-none">+</span>
+            <span class="text-xl font-light text-zinc-300 group-open:rotate-45 transition-transform shrink-0 leading-none">+</span>
           </summary>
-          <p class="px-5 pb-5 text-sm text-gray-500 leading-relaxed">{a}</p>
+          <p class="pb-5 text-sm text-zinc-500 leading-relaxed">{a}</p>
         </details>
       ))}
     </div>
   </Container>
 
-  <!-- CTA -->
-  <section class="bg-green-700 text-white">
-    <Container class="py-14 flex flex-col sm:flex-row items-center justify-between gap-6">
+  <!-- CTA: yellow band -->
+  <section class="bg-yellow-400">
+    <Container class="py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
       <div>
-        <p class="text-xs font-bold uppercase tracking-widest text-green-300 mb-1">Gratis · geen account</p>
-        <h2 class="text-2xl font-black">Klaar om te oefenen?</h2>
-        <p class="text-green-100 text-sm mt-1">Ken alle verkeersborden en slaag voor je theorie-examen.</p>
+        <p class="text-xs font-black uppercase tracking-widest text-yellow-700 mb-1">Gratis · geen account nodig</p>
+        <h2 class="text-2xl font-black text-zinc-900">Klaar om te beginnen?</h2>
+        <p class="text-zinc-700 text-sm mt-1">Ken alle verkeersborden en slaag voor je theorie-examen.</p>
       </div>
-      <a href="/oefenen/" class="shrink-0 inline-flex items-center gap-2 bg-amber-400 text-gray-900 font-black px-7 py-3 rounded-full hover:bg-amber-300 transition-colors text-sm shadow-sm">
+      <a href="/oefenen/" class="shrink-0 inline-flex items-center bg-zinc-950 text-yellow-400 font-black px-7 py-3 hover:bg-zinc-800 transition-colors text-sm">
         Begin nu gratis →
       </a>
     </Container>
