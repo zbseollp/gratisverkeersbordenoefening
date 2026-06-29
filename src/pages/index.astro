@@ -5,14 +5,14 @@ import { SITE } from "@lib/site";
 
 const categories = [
   { letter: "A", label: "Gevaarswaarschuwingsborden", desc: "Driehoekige borden met rode rand. Waarschuwen voor gevaarlijke situaties op de weg.", href: "/verkeersborden/#gevaarswaarschuwing", symbol: "▲", color: "text-red-400" },
-  { letter: "B", label: "Voorrangsborden", desc: "Regelen wie voorrang heeft — haaienstanden, stopbord en voorrangsbord.", href: "/verkeersborden/#voorrang", symbol: "◆", color: "text-amber-400" },
+  { letter: "B", label: "Voorrangsborden", desc: "Regelen wie voorrang heeft: haaienstanden, stopbord en voorrangsbord.", href: "/verkeersborden/#voorrang", symbol: "◆", color: "text-amber-400" },
   { letter: "C", label: "Verbodsborden", desc: "Ronde borden met rode rand. Verbieden inhalen, parkeren of bepaalde voertuigen.", href: "/verkeersborden/#verbod", symbol: "⊘", color: "text-rose-400" },
   { letter: "D", label: "Gebodsborden", desc: "Ronde blauwe borden. Schrijven voor wat je MOET doen: richting, rotonde, snelheid.", href: "/verkeersborden/#gebod", symbol: "●", color: "text-blue-400" },
   { letter: "E", label: "Aanwijzingsborden", desc: "Blauwe rechthoekige borden voor rijstroken, parkeren en fietsers.", href: "/verkeersborden/#aanwijzing", symbol: "▬", color: "text-sky-400" },
   { letter: "F", label: "Informatieborden", desc: "Geven aanvullende informatie: bebouwde kom, snelheidszones, parkeerinfo.", href: "/verkeersborden/#informatie", symbol: "ℹ", color: "text-zinc-400" },
 ];
 ---
-<BaseLayout title={`${SITE.name} — ${SITE.tagline}`} description={SITE.description}>
+<BaseLayout title={`${SITE.name} | ${SITE.tagline}`} description={SITE.description}>
 
   <!-- Hero: white, big typography, dark sign grid -->
   <section class="bg-white border-b border-zinc-100">
@@ -26,7 +26,7 @@ const categories = [
             verkeers&shy;borden?
           </h1>
           <p class="mt-6 text-zinc-600 text-base max-w-md leading-relaxed">
-            Er zijn meer dan 200 officiële Nederlandse verkeersborden. Leer ze herkennen en slaag voor je theorie-examen — gratis, direct, zonder account.
+            Er zijn meer dan 200 officiële Nederlandse verkeersborden. Leer ze herkennen en slaag voor je theorie-examen. Gratis, direct, zonder account.
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
             <a href="/oefenen/" class="inline-flex items-center bg-yellow-400 text-zinc-900 font-black px-6 py-3 text-sm hover:bg-yellow-300 transition-colors">
@@ -105,8 +105,8 @@ const categories = [
       <div class="grid gap-10 sm:grid-cols-3">
         {[
           { n: "01", title: "Leer de systematiek", body: "Elke categorie heeft een eigen vorm en kleur. Driehoek + rood = gevaar. Cirkel + rood = verbod. Cirkel + blauw = gebod. Die logica dekt 80% van alle borden." },
-          { n: "02", title: "Focus op het examen", body: "C6, C11, D1, D4, B6, B7 — dit zijn de borden die het vaakst terugkomen op het CBR examen. Begin hier, ga daarna verder." },
-          { n: "03", title: "Train visuele herkenning", body: "Op het examen zie je een afbeelding, geen omschrijving. Oefen borden visueel herkennen — niet nummercodes uit je hoofd leren." },
+          { n: "02", title: "Focus op het examen", body: "C6, C11, D1, D4, B6, B7 zijn de borden die het vaakst terugkomen op het CBR examen. Begin hier, ga daarna verder." },
+          { n: "03", title: "Train visuele herkenning", body: "Op het examen zie je een afbeelding, geen omschrijving. Oefen borden visueel herkennen, niet nummercodes uit je hoofd leren." },
         ].map(({ n, title, body }) => (
           <div>
             <div class="text-6xl font-black text-yellow-400 leading-none mb-5 opacity-80">{n}</div>
@@ -135,7 +135,7 @@ const categories = [
         { q: "Welke borden komen het meest voor op het examen?", a: "Verbodsborden (C), gebodsborden (D) en gevaarswaarschuwingsborden (A) komen het meest voor. Ook voorrangssituaties met het stopbord (B6) en verleen voorrang (B7) zijn examenfavoriet." },
         { q: "Hoe herken ik snel wat een bord betekent?", a: "Gebruik de vorm en kleur als eerste aanwijzing. Driehoek met rode rand = gevaar. Rode cirkel = verbod. Blauwe cirkel = gebod. Die basisregel dekt al 80% van de borden." },
         { q: "Moet ik alle borden uit mijn hoofd leren?", a: "Niet per se. Focus op de meest voorkomende borden en leer de systematiek van de categorieën. Als je de logica begrijpt, kun je ook onbekende borden redeneren." },
-        { q: "Zijn de borden hetzelfde als in België of Duitsland?", a: "Grotendeels wel — veel borden zijn gebaseerd op Europese verdragen. Er zijn kleine regionale verschillen, maar de basiscategorieën zijn in heel Europa hetzelfde." },
+        { q: "Zijn de borden hetzelfde als in België of Duitsland?", a: "Grotendeels wel. Veel borden zijn gebaseerd op Europese verdragen. Er zijn kleine regionale verschillen, maar de basiscategorieën zijn in heel Europa hetzelfde." },
       ].map(({ q, a }) => (
         <details class="group">
           <summary class="flex cursor-pointer items-center justify-between py-4 text-sm font-bold text-zinc-900 list-none gap-4 hover:text-zinc-600 transition-colors">
